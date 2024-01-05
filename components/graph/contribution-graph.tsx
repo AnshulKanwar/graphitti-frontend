@@ -4,12 +4,13 @@ import Graph from "./graph";
 import { Point } from "@/lib/point";
 import { download } from "@/lib/utils";
 import { Button } from "../ui/button";
+import { FolderDown, RotateCcw } from "lucide-react";
 
 export default function ContributionGraph() {
   const [contributions, setContributions] = useState<Point[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleClick = (p: Point) => {
+  const onPixelClick = (p: Point) => {
     setContributions((prev) => {
       const idx = prev.findIndex((q) => p.x === q.x && p.y == q.y);
       if (idx === -1) {
@@ -18,6 +19,10 @@ export default function ContributionGraph() {
         return prev.filter((q) => !(p.x === q.x && p.y == q.y));
       }
     });
+  };
+
+  const reset = () => {
+    setContributions([]);
   };
 
   const generate = async () => {
@@ -45,10 +50,16 @@ export default function ContributionGraph() {
 
   return (
     <div>
-      <Graph contributions={contributions} handleClick={handleClick} />
-      <div className="flex justify-end mt-5">
-        <Button variant="outline">Reset</Button>
-        <Button onClick={generate}>Download</Button>
+      <Graph contributions={contributions} handleClick={onPixelClick} />
+      <div className="flex justify-end mt-5 gap-2">
+        <Button variant="outline" onClick={reset}>
+          <RotateCcw className="mr-2 w-4 h-4" />
+          Reset
+        </Button>
+        <Button onClick={generate}>
+          <FolderDown className="mr-2 w-4 h-4" />
+          Download
+        </Button>
       </div>
     </div>
   );
