@@ -1,4 +1,4 @@
-import { Point } from "../lib";
+import { Point } from "@/lib/point";
 
 export default function Pixel({
   point,
@@ -11,7 +11,7 @@ export default function Pixel({
 }) {
   return (
     <div
-      className={`w-[10px] h-[10px] rounded-sm ${color}`}
+      className={`w-[10px] h-[10px] rounded-[2px] ${color}`}
       onClick={() => handleClick(point)}
     ></div>
   );

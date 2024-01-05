@@ -1,4 +1,4 @@
-import ContributionGraph from "./ui/contribution-graph";
+import ContributionGraph from "@/components/graph/contribution-graph";
 
 export default function Home() {
   return (

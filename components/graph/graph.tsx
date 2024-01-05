@@ -1,4 +1,4 @@
-import { Point, getPoint, isInvalidPixel } from "../lib";
+import { Point, getPoint, isInvalidPixel } from "@/lib/point";
 import Pixel from "./pixel";
 
 export default function ContributionGraph({
