@@ -10,7 +10,7 @@ export const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "Graphitti",
-  description: "Create art on you github contribution graph",
+  description: "Create art on your github contribution graph",
 };
 
 export default function RootLayout({
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.className
+          fontSans.variable
         )}
       >
         {children}

@@ -47,6 +47,7 @@ export default function ContributionGraph() {
     <div>
       <Graph contributions={contributions} handleClick={handleClick} />
       <div className="flex justify-end mt-5">
+        <Button variant="outline">Reset</Button>
         <Button onClick={generate}>Download</Button>
       </div>
     </div>
