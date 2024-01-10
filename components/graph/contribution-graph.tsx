@@ -61,7 +61,7 @@ export default function ContributionGraph() {
   };
 
   return (
-    <div>
+    <div className="max-w-fit">
       <div className="flex gap-5 mb-10">
         <ConfigForm {...config} onChange={handleChange} />
       </div>
