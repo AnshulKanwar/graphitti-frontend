@@ -12,6 +12,7 @@ export default function ContributionGraph() {
   const [config, setConfig] = useState({
     name: "",
     email: "",
+    year: new Date().getFullYear(),
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -30,11 +31,15 @@ export default function ContributionGraph() {
     setArt([]);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConfig({
       ...config,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const onChangeYear = (value: string) => {
+    setConfig((prev) => ({ ...prev, year: parseInt(value) }));
   };
 
   const generate = async () => {
@@ -63,9 +68,13 @@ export default function ContributionGraph() {
   return (
     <div className="max-w-fit">
       <div className="flex gap-5 mb-10">
-        <ConfigForm {...config} onChange={handleChange} />
+        <ConfigForm
+          {...config}
+          onChange={onChange}
+          onChangeYear={onChangeYear}
+        />
       </div>
-      <Graph art={art} handleClick={onPixelClick} />
+      <Graph art={art} year={config.year} handleClick={onPixelClick} />
       <div className="flex justify-end mt-5 gap-2">
         <Button variant="outline" onClick={reset}>
           <RotateCcw className="mr-2 w-4 h-4" />

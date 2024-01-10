@@ -3,13 +3,15 @@ import Pixel from "./pixel";
 
 export default function ContributionGraph({
   art,
+  year,
   handleClick,
 }: {
   art: Point[];
+  year: number;
   handleClick: (p: Point) => void;
 }) {
   const getColor = (point: Point) => {
-    if (isInvalidPixel(point)) {
+    if (isInvalidPixel(point, year)) {
       return "bg-transparent";
     } else if (art.some((p) => p.x === point.x && p.y === point.y)) {
       return "bg-[#40c463]";
