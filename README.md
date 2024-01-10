@@ -1,5 +1,5 @@
 # TODO
 
 - [ ] error handling
-- [ ] add reset button 
+- [x] add reset button 
 - [ ] optimize state (use map)
