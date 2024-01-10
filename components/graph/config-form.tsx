@@ -11,7 +11,7 @@ export default function ConfigForm({
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
-    <div className="flex space-x-5 w-full">
+    <div className="flex flex-col sm:flex-row gap-5 w-full">
       <div>
         <Input
           placeholder="Name"
