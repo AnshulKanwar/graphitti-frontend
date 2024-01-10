@@ -4,14 +4,19 @@ import Graph from "./graph";
 import { Point } from "@/lib/point";
 import { download } from "@/lib/utils";
 import { Button } from "../ui/button";
-import { FolderDown, RotateCcw } from "lucide-react";
+import { FolderDown, Loader, RotateCcw } from "lucide-react";
+import ConfigForm from "./config-form";
 
 export default function ContributionGraph() {
-  const [contributions, setContributions] = useState<Point[]>([]);
+  const [art, setArt] = useState<Point[]>([]);
+  const [config, setConfig] = useState({
+    name: "",
+    email: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const onPixelClick = (p: Point) => {
-    setContributions((prev) => {
+    setArt((prev) => {
       const idx = prev.findIndex((q) => p.x === q.x && p.y == q.y);
       if (idx === -1) {
         return [...prev, p];
@@ -22,7 +27,14 @@ export default function ContributionGraph() {
   };
 
   const reset = () => {
-    setContributions([]);
+    setArt([]);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConfig({
+      ...config,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const generate = async () => {
@@ -30,7 +42,7 @@ export default function ContributionGraph() {
       setIsLoading(true);
       const response = await fetch("http://localhost:8080/generate", {
         method: "POST",
-        body: JSON.stringify(contributions),
+        body: JSON.stringify({ config, art }),
       });
 
       if (!response.ok) {
@@ -50,15 +62,24 @@ export default function ContributionGraph() {
 
   return (
     <div>
-      <Graph contributions={contributions} handleClick={onPixelClick} />
+      <div className="flex gap-5 mb-10">
+        <ConfigForm {...config} onChange={handleChange} />
+      </div>
+      <Graph art={art} handleClick={onPixelClick} />
       <div className="flex justify-end mt-5 gap-2">
         <Button variant="outline" onClick={reset}>
           <RotateCcw className="mr-2 w-4 h-4" />
           Reset
         </Button>
-        <Button onClick={generate}>
-          <FolderDown className="mr-2 w-4 h-4" />
-          Download
+        <Button onClick={generate} className="w-[125px]">
+          {isLoading ? (
+            <Loader className="animate-spin" />
+          ) : (
+            <>
+              <FolderDown className="mr-2 w-4 h-4" />
+              Download
+            </>
+          )}
         </Button>
       </div>
     </div>

@@ -2,16 +2,16 @@ import { Point, getPoint, isInvalidPixel } from "@/lib/point";
 import Pixel from "./pixel";
 
 export default function ContributionGraph({
-  contributions,
+  art,
   handleClick,
 }: {
-  contributions: Point[];
+  art: Point[];
   handleClick: (p: Point) => void;
 }) {
   const getColor = (point: Point) => {
     if (isInvalidPixel(point)) {
       return "bg-transparent";
-    } else if (contributions.some((p) => p.x === point.x && p.y === point.y)) {
+    } else if (art.some((p) => p.x === point.x && p.y === point.y)) {
       return "bg-[#40c463]";
     } else {
       return "bg-[#ebedf0]";
