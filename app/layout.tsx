@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Nav from "@/components/nav";
@@ -29,6 +30,7 @@ export default function RootLayout({
       >
         <Nav />
         {children}
+        <Analytics />
       </body>
     </html>
   );
