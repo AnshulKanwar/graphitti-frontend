@@ -45,7 +45,7 @@ export default function ContributionGraph() {
   const generate = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:8080/generate", {
+      const response = await fetch("/api/generate", {
         method: "POST",
         body: JSON.stringify({ config, art }),
       });
