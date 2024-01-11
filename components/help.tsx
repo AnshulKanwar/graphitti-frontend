@@ -1,6 +1,5 @@
 "use client";
-import { HoverCard, HoverCardContent } from "./ui/hover-card";
-import { HoverCardTrigger } from "@radix-ui/react-hover-card";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { HelpCircle } from "lucide-react";
 import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -8,7 +7,7 @@ import Link from "next/link";
 
 export default function Help() {
   return (
-    <HoverCard openDelay={200} defaultOpen>
+    <HoverCard openDelay={200}>
       <HoverCardTrigger>
         <HelpCircle
           className={cn(buttonVariants({ variant: "ghost" }), "w-9 px-0")}
