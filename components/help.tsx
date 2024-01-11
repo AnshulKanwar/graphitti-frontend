@@ -19,7 +19,7 @@ export default function Help() {
           <ol className="text-sm list-decimal list-inside space-y-3">
             <li>Enter the same email address that you use on your github.</li>
             <li>
-              Select the year where you want the art to show up on you profile.
+              Select the year where you want the art to show up on your profile.
             </li>
             <li>
               Push the downloaded git repo to github. For help see{" "}
